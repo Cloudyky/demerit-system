@@ -13,11 +13,13 @@ return new class extends Migration
     {
         //
         Schema::create('students', function (Blueprint $table) {
+            $table->id('id')->autoIncrement();
             $table->string('name');
             $table->string('ic')->unique();
-            $table->string('class');
+            $table->string('tahun');
             $table->string('kohort');
-            $table->integer('entry_year');
+            $table->string('class');
+            $table->integer('merit_point');
             $table->timestamps();
         });
     }
