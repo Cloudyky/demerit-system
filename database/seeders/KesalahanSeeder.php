@@ -12,7 +12,7 @@ class KesalahanSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('kesalahan')->insert([
+        DB::table('offenses')->insert([
             ['jenis_kesalahan' => 'Membuli', 'dimerit' => 40],
             ['jenis_kesalahan' => 'Melakukan kesalahan berkaitan seksual', 'dimerit' => 40],
             ['jenis_kesalahan' => 'Terlibat dalam kegiatan dadah', 'dimerit' => 40],
