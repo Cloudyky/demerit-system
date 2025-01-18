@@ -47,7 +47,8 @@
                                                 
                                                 <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
 
-                                                <a href="{{ route('dashboard') }}">
+                                                <!-- Fix: Update Edit button route -->
+                                                <a href="{{ route('offense.edit', $offense) }}">
                                                     <button type="button" class="btn btn-primary">{{ __('Edit') }}</button>
                                                 </a>
                                             </form>

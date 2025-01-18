@@ -30,6 +30,14 @@ Route::get('/offense', [OffenseController::class, 'index'])
     ->middleware(['auth', 'verified', AdminMiddleware::class])
     ->name('offense');
 
+Route::get('/offense/{offense}/edit', [OffenseController::class, 'edit'])
+    ->middleware(['auth', 'verified', AdminMiddleware::class])
+    ->name('offense.edit');
+
+Route::put('/offense/{offense}', [OffenseController::class, 'update'])
+    ->middleware(['auth', 'verified', AdminMiddleware::class])
+    ->name('offense.update');
+
 Route::get('/system-settings', function () {
         return view('settings');
     })
