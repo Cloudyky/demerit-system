@@ -40,4 +40,25 @@ class OffenseController extends Controller
         return redirect()->route('offense')->with('success', 'Offense updated successfully.');
     }
 
+    public function create()
+    {
+        // return view('add_offense');
+        dd(view()->exists('add_offense')); 
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'offense' => 'required|string|max:255',
+            'points' => 'required|integer|min:0',
+        ]);
+
+        Offense::create([
+            'jenis_kesalahan' => $request->input('offense'),
+            'dimerit' => $request->input('points'),
+        ]);
+
+        return redirect()->route('offense')->with('success', 'Offense added successfully.');
+    }
+
 }

@@ -8,8 +8,7 @@ class Offense extends Model
 {
     //
     protected $fillable = [
-        'id',
         'jenis_kesalahan',
-        'demerit',
+        'dimerit',
     ];
 }

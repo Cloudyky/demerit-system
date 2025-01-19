@@ -22,17 +22,25 @@ Route::get('/users', [UserController::class, 'index'])
     ->middleware(['auth', 'verified', AdminMiddleware::class])
     ->name('users');
     
-Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])
+    ->middleware(['auth', 'verified', AdminMiddleware::class])
+    ->name('users.destroy');
 
-Route::delete('/offense/{offense}', [OffenseController::class, 'destroy'])->name('offense.destroy');
+Route::delete('/offense/{offense}', [OffenseController::class, 'destroy'])
+    ->middleware(['auth', 'verified', AdminMiddleware::class])
+    ->name('offense.destroy');
 
 Route::get('/offense', [OffenseController::class, 'index'])
     ->middleware(['auth', 'verified', AdminMiddleware::class])
     ->name('offense');
 
-Route::get('/offense/{offense}/edit', [OffenseController::class, 'edit'])
+Route::get('/offense/{offense}', [OffenseController::class, 'edit'])
     ->middleware(['auth', 'verified', AdminMiddleware::class])
     ->name('offense.edit');
+
+Route::get('/offense/create', [OffenseController::class, 'create'])
+    ->middleware(['auth', 'verified', AdminMiddleware::class])
+    ->name('offense.create');
 
 Route::put('/offense/{offense}', [OffenseController::class, 'update'])
     ->middleware(['auth', 'verified', AdminMiddleware::class])

@@ -21,7 +21,10 @@
                                 <option value="lowest">Demerit (Lowest to Highest)</option>
                             </select>
                         </form>
-                        <button class="btn btn-secondary" onclick="printTable()">Print Table</button>
+                        <div class="flex gap-2">
+                            <a class="btn btn-primary" href="{{ route('offenses.create') }}" role="button">Add New Offense</a>
+                            <button class="btn btn-secondary" onclick="printTable()">Print Table</button>
+                        </div>
                     </div>
 
                     <div class="table-responsive">
