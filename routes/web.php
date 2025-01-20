@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OffenseController;
+use App\Http\Controllers\SystemSettingController;
+use App\Http\Controllers\CreateOffenseController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,39 +20,24 @@ Route::get('/students', function () {
     return view('students');
 })->name('students');
 
-Route::get('/users', [UserController::class, 'index'])
-    ->middleware(['auth', 'verified', AdminMiddleware::class])
-    ->name('users');
-    
-Route::delete('/users/{user}', [UserController::class, 'destroy'])
-    ->middleware(['auth', 'verified', AdminMiddleware::class])
-    ->name('users.destroy');
+Route::middleware(['auth', 'verified', AdminMiddleware::class])->group(function () {
+    // User
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
-Route::delete('/offense/{offense}', [OffenseController::class, 'destroy'])
-    ->middleware(['auth', 'verified', AdminMiddleware::class])
-    ->name('offense.destroy');
+    // Offense
+    Route::get('/offense', [OffenseController::class, 'index'])->name('offense');
+    Route::delete('/offense/{offense}', [OffenseController::class, 'destroy'])->name('offense.destroy');
+    Route::get('/offense/{offense}', [OffenseController::class, 'edit'])->name('offense.edit');
+    Route::get('/offense/create', function () {
+        return view('offense.add');
+    })->name('offense.create');
+    Route::put('/offense/{offense}', [OffenseController::class, 'update'])->name('offense.update');
+    Route::post('/offense', [OffenseController::class, 'store'])->name('offense.store');
 
-Route::get('/offense', [OffenseController::class, 'index'])
-    ->middleware(['auth', 'verified', AdminMiddleware::class])
-    ->name('offense');
-
-Route::get('/offense/{offense}', [OffenseController::class, 'edit'])
-    ->middleware(['auth', 'verified', AdminMiddleware::class])
-    ->name('offense.edit');
-
-Route::get('/offense/create', [OffenseController::class, 'create'])
-    ->middleware(['auth', 'verified', AdminMiddleware::class])
-    ->name('offense.create');
-
-Route::put('/offense/{offense}', [OffenseController::class, 'update'])
-    ->middleware(['auth', 'verified', AdminMiddleware::class])
-    ->name('offense.update');
-
-Route::get('/system-settings', function () {
-        return view('settings');
-    })
-    ->middleware(['auth', 'verified', AdminMiddleware::class])
-    ->name('settings');
+    // System Settings
+    Route::get('/settings', [SystemSettingController::class, 'index'])->name('settings');
+}); 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

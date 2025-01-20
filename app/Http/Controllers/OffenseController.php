@@ -11,7 +11,7 @@ class OffenseController extends Controller
     public function index(Request $request)
     {
         $offenses = Offense::all();
-        return view('offense', compact('offenses'));
+        return view('offense.offense', compact('offenses'));
     }
 
     public function destroy(Offense $offense)
@@ -22,7 +22,7 @@ class OffenseController extends Controller
 
     public function edit(Offense $offense)
     {
-        return view('edit_offense', compact('offense'));
+        return view('offense.edit', compact('offense'));
     }
 
     public function update(Request $request, Offense $offense)
@@ -38,12 +38,6 @@ class OffenseController extends Controller
         ]);
 
         return redirect()->route('offense')->with('success', 'Offense updated successfully.');
-    }
-
-    public function create()
-    {
-        // return view('add_offense');
-        dd(view()->exists('add_offense')); 
     }
 
     public function store(Request $request)
