@@ -40,6 +40,11 @@ class OffenseController extends Controller
         return redirect()->route('offense')->with('success', 'Offense updated successfully.');
     }
 
+    public function create()
+    {
+        return view('offense.create');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -53,6 +58,10 @@ class OffenseController extends Controller
         ]);
 
         return redirect()->route('offense')->with('success', 'Offense added successfully.');
+    }
+
+    public function test(){
+        return view('offense.create');
     }
 
 }

@@ -12,19 +12,31 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link 
+                    :href="route('dashboard')" 
+                    :active="request()->routeIs('dashboard')"
+                    >
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     @if (Auth::user() && Auth::user()->role === 'admin')
-                        <x-nav-link :href="route('users')" :active="request()->routeIs('users')">
+                        <x-nav-link 
+                        :href="route('users')" 
+                        :active="request()->routeIs('users')"
+                        >
                             {{ __('Users') }}
                         </x-nav-link>
                     @endif
-                    <x-nav-link :href="route('students')" :active="request()->routeIs('students')">
+                    <x-nav-link 
+                    :href="route('students')" 
+                    :active="request()->routeIs('students')"
+                    >
                         {{ __('Students') }}
                     </x-nav-link>
                     @if (Auth::user() && Auth::user()->role === 'admin')
-                        <x-nav-link :href="route('offense')" :active="request()->routeIs('offense')">
+                        <x-nav-link 
+                        :href="route('offense')"
+                        :active="request()->routeIs('offense') || request()->routeIs('offense.create') || request()->routeIs('offense.edit')"
+                        >
                             {{ __('Offense') }}
                         </x-nav-link>
                         <x-nav-link :href="route('settings')" :active="request()->routeIs('settings')">
@@ -83,22 +95,37 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link 
+            :href="route('dashboard')" 
+            :active="request()->routeIs('dashboard')"
+            >
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             @if (Auth::user() && Auth::user()->role === 'admin')
-                <x-responsive-nav-link :href="route('users')" :active="request()->routeIs('users')">
+                <x-responsive-nav-link 
+                :href="route('users')" 
+                :active="request()->routeIs('users')"
+                >
                     {{ __('Users') }}
                 </x-responsive-nav-link>
             @endif
-            <x-responsive-nav-link :href="route('students')" :active="request()->routeIs('students')">
+            <x-responsive-nav-link 
+            :href="route('students')" 
+            :active="request()->routeIs('students')"
+            >
                 {{ __('Students') }}
             </x-responsive-nav-link>
             @if (Auth::user() && Auth::user()->role === 'admin')
-                <x-responsive-nav-link :href="route('offense')" :active="request()->routeIs('offense')">
+                <x-responsive-nav-link 
+                :href="route('offense')" 
+                :active="request()->routeIs('offense')"
+                >
                     {{ __('Offense') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('settings')" :active="request()->routeIs('settings')">
+                <x-responsive-nav-link 
+                :href="route('settings')" 
+                :active="request()->routeIs('settings')"
+                >
                     {{ __('System Settings') }}
                 </x-responsive-nav-link>
             @endif

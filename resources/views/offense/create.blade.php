@@ -9,7 +9,7 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-md rounded-lg overflow-hidden">
                 <div class="p-6">
-                    <form method="POST" action="{{ route('offenses.store') }}">
+                    <form method="POST" action="{{ route('offense.store') }}">
                         @csrf
                         <div class="mb-4">
                             <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Offense Name:</label>
