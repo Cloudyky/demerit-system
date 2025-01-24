@@ -29,7 +29,7 @@ Route::middleware(['auth', 'verified', AdminMiddleware::class])->group(function 
     Route::get('/offense', [OffenseController::class, 'index'])->name('offense');
     Route::delete('/offense/{offense}', [OffenseController::class, 'destroy'])->name('offense.destroy');
     Route::get('/offense/{offense}', [OffenseController::class, 'edit'])->name('offense.edit');
-    Route::get('/offense/create', [OffenseController::class, 'create'])->name('offense.create');
+    Route::get('/offense/create', [OffenseController::class, 'create'])->name('offense.create'); // problem 
     Route::put('/offense/{offense}', [OffenseController::class, 'update'])->name('offense.update');
     Route::post('/offense', [OffenseController::class, 'store'])->name('offense.store');
 
