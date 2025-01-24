@@ -22,7 +22,9 @@
                             </select>
                         </form>
                         <div class="flex gap-2">
-                            <a class="btn btn-primary" href="{{ route('offense.add') }}" role="button">Add New Offense</a>
+                            <a class="btn btn-primary" href="{{ route('offense.create') }}" role="button">Add
+                                
+                                New Offense</a>
                             <button class="btn btn-secondary" onclick="printTable()">Print Table</button>
                         </div>
                     </div>
