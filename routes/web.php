@@ -29,7 +29,10 @@ Route::middleware(['auth', 'verified', AdminMiddleware::class])->group(function 
     Route::get('/offense', [OffenseController::class, 'index'])->name('offense');
     Route::delete('/offense/{offense}', [OffenseController::class, 'destroy'])->name('offense.destroy');
     Route::get('/offense/{offense}', [OffenseController::class, 'edit'])->name('offense.edit');
-    Route::get('/offense/buat', [OffenseController::class, 'test'])->name('offense.create');
+    // Route::get('/offense/create', [UserController::class, 'index'])->name('offense.create');
+    Route::get('offense/add', function () {
+        return view('test');
+    })->name('offense.add');
     Route::put('/offense/{offense}', [OffenseController::class, 'update'])->name('offense.update');
     Route::post('/offense', [OffenseController::class, 'store'])->name('offense.store');
 
@@ -40,7 +43,7 @@ Route::middleware(['auth', 'verified', AdminMiddleware::class])->group(function 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');  
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';
