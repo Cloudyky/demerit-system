@@ -35,4 +35,9 @@ class UserController extends Controller
         
         return redirect()->route('users')->with('error', 'You are not authorized to delete this user.');
     }
+    
+    public function show()
+    {
+        return view('users');
+    }
 }

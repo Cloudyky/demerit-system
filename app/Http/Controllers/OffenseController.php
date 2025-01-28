@@ -40,9 +40,9 @@ class OffenseController extends Controller
         return redirect()->route('offense')->with('success', 'Offense updated successfully.');
     }
 
-    public function create()
+    public function show()
     {
-        return view('offense.create');
+        return view('settings');
     }
 
     public function store(Request $request)
@@ -58,10 +58,6 @@ class OffenseController extends Controller
         ]);
 
         return redirect()->route('offense')->with('success', 'Offense added successfully.');
-    }
-
-    public function test(){
-        return view('offense.create');
     }
 
 }
