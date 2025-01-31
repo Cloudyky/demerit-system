@@ -22,7 +22,7 @@
                             </select>
                         </form>
                         <div class="flex gap-2">
-                            <a class="btn btn-primary" href="{{ route('show') }}" role="button">Add New Offense</a>
+                            <a class="btn btn-primary" href="{{ route('offense.add') }}" role="button">Add New Offense</a>
                             <button class="btn btn-secondary" onclick="printTable()">Print Table</button>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                         <table id="offenseTable" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="text-center">{{ __('Id') }}</th>
+                                    <th scope="col" class="text-center">{{ __('No') }}</th>
                                     <th scope="col" class="text-center">{{ __('Offense') }}</th>
                                     <th scope="col" class="text-center">{{ __('Demerit Points') }}</th>
                                     <th scope="col" class="text-center">{{ __('Action') }}</th>
@@ -40,7 +40,7 @@
                             <tbody id="offense-list">
                                 @foreach ($offenses as $offense)
                                     <tr>
-                                        <td class="text-center">{{ $offense->id }}</td>
+                                        <td class="text-center">{{ $loop->iteration }}</td>
                                         <td class="text-center">{{ $offense->jenis_kesalahan }}</td>
                                         <td class="text-center">{{ $offense->dimerit }}</td>
                                         <td class="text-center">

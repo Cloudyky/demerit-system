@@ -20,6 +20,8 @@ Route::get('/students', function () {
     return view('students');
 })->name('students');
 
+Route::get('/offense/add', [OffenseController::class, 'show'])->name('offense.add'); 
+
 Route::middleware(['auth', 'verified', AdminMiddleware::class])->group(function () {
     // User
     Route::get('/users', [UserController::class, 'index'])->name('users');
@@ -29,7 +31,6 @@ Route::middleware(['auth', 'verified', AdminMiddleware::class])->group(function 
     Route::get('/offense', [OffenseController::class, 'index'])->name('offense');
     Route::delete('/offense/{offense}', [OffenseController::class, 'destroy'])->name('offense.destroy');
     Route::get('/offense/{offense}', [OffenseController::class, 'edit'])->name('offense.edit');
-    Route::get('/offense/create', [OffenseController::class, 'show'])->name('show'); // problem 
     Route::put('/offense/{offense}', [OffenseController::class, 'update'])->name('offense.update');
     Route::post('/offense', [OffenseController::class, 'store'])->name('offense.store');
 

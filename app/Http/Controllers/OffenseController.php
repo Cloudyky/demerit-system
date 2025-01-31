@@ -42,18 +42,22 @@ class OffenseController extends Controller
 
     public function show()
     {
-        return view('settings');
+        if (!auth()->check() || auth()->user()->role !== 'admin') {
+            return abort(403, 'Unauthorized access');
+        }
+
+        return view('offense.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'offense' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
             'points' => 'required|integer|min:0',
         ]);
 
         Offense::create([
-            'jenis_kesalahan' => $request->input('offense'),
+            'jenis_kesalahan' => $request->input('description'),
             'dimerit' => $request->input('points'),
         ]);
 
