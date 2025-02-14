@@ -27,7 +27,7 @@
                                 id="offense"
                                 name="offense"
                                 class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                value="{{ old('offense', $offense->jenis_kesalahan) }}"
+                                value="{{ old('offense', $offense->offense_type) }}"
                                 required
                             >
                             @error('offense')
@@ -45,7 +45,7 @@
                                 id="points"
                                 name="points"
                                 class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                value="{{ old('points', $offense->dimerit) }}"
+                                value="{{ old('points', $offense->demerit) }}"
                                 required
                             >
                             @error('points')

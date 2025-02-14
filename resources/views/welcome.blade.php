@@ -68,7 +68,7 @@
                             @auth
                                 <a href="{{ url('/dashboard') }}" class="btn btn-success btn-lg mt-4">Pergi ke Dashboard</a>
                             @else
-                                <a href="{{ route('login') }}" class="btn btn-primary btn-lg mt-4 me-2">Log Masuk</a>
+                                <a href="{{ route('login') }}" class="btn btn-primary btn-lg mt-4 me-2">Log In</a>
                             @endauth
                         @endif
                     </div>

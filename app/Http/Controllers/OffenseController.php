@@ -11,7 +11,7 @@ class OffenseController extends Controller
     public function index(Request $request)
     {
         $offenses = Offense::all();
-        return view('offense.offense', compact('offenses'));
+        return view('offense.index', compact('offenses'));
     }
 
     public function destroy(Offense $offense)
@@ -33,8 +33,8 @@ class OffenseController extends Controller
         ]);
 
         $offense->update([
-            'jenis_kesalahan' => $request->input('offense'),
-            'dimerit' => $request->input('points'),
+            'offense_type' => $request->input('offense'),
+            'demerit' => $request->input('points'),
         ]);
 
         return redirect()->route('offense')->with('success', 'Offense updated successfully.');
@@ -57,8 +57,8 @@ class OffenseController extends Controller
         ]);
 
         Offense::create([
-            'jenis_kesalahan' => $request->input('description'),
-            'dimerit' => $request->input('points'),
+            'offense_type' => $request->input('description'),
+            'demerit' => $request->input('points'),
         ]);
 
         return redirect()->route('offense')->with('success', 'Offense added successfully.');

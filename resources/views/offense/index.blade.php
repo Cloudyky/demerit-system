@@ -31,7 +31,7 @@
                         <table id="offenseTable" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="text-center">{{ __('No') }}</th>
+                                    <th scope="col" class="text-center">{{ __('No.') }}</th>
                                     <th scope="col" class="text-center">{{ __('Offense') }}</th>
                                     <th scope="col" class="text-center">{{ __('Demerit Points') }}</th>
                                     <th scope="col" class="text-center">{{ __('Action') }}</th>
@@ -41,8 +41,8 @@
                                 @foreach ($offenses as $offense)
                                     <tr>
                                         <td class="text-center">{{ $loop->iteration }}</td>
-                                        <td class="text-center">{{ $offense->jenis_kesalahan }}</td>
-                                        <td class="text-center">{{ $offense->dimerit }}</td>
+                                        <td class="text-center">{{ $offense->offense_type }}</td>
+                                        <td class="text-center">{{ $offense->demerit }}</td>
                                         <td class="text-center">
                                             <form action="{{ route('offense.destroy', $offense) }}" method="POST" onsubmit="return confirm('{{ __('Are you sure you want to delete this offense?') }}');">
                                                 @csrf

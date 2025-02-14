@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('students', function (Blueprint $table) {
-            // $table->string('kohort')->nullable()->after('years');
-            // $table->string('jantina')->nullable()->after('kohort');
+        //
+        Schema::create('offenses', function (Blueprint $table) {
+            $table->id();
+            $table->string('offense_type');
+            $table->integer('demerit');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
@@ -22,8 +26,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('students', function (Blueprint $table) {
-            // $table->dropColumn(['kohort', 'jantina']);
-        });
+        //
+        Schema::dropIfExists('offenses');
     }
 };

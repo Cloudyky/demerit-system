@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Offenses') }}
+            {{ __('Contribution') }}
         </h2>
     </x-slot>
 
@@ -17,12 +17,12 @@
                                 id="sort" 
                                 name="sort"
                                 onchange="sortOffenses()">
-                                <option value="highest">Demerit (Highest to Lowest)</option>
-                                <option value="lowest">Demerit (Lowest to Highest)</option>
+                                <option value="highest">Merit (Highest to Lowest)</option>
+                                <option value="lowest">Merit (Lowest to Highest)</option>
                             </select>
                         </form>
                         <div class="flex gap-2">
-                            <a class="btn btn-primary" href="{{ route('offense.create') }}" role="button">Add New Offense</a>
+                            <a class="btn btn-primary" href="{{ route('offense.add') }}" role="button">Add New Contribution</a>
                             <button class="btn btn-secondary" onclick="printTable()">Print Table</button>
                         </div>
                     </div>
@@ -31,24 +31,24 @@
                         <table id="offenseTable" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="text-center">{{ __('Id') }}</th>
-                                    <th scope="col" class="text-center">{{ __('Offense') }}</th>
-                                    <th scope="col" class="text-center">{{ __('Demerit Points') }}</th>
+                                    <th scope="col" class="text-center">{{ __('No.') }}</th>
+                                    <th scope="col" class="text-center">{{ __('Contribution') }}</th>
+                                    <th scope="col" class="text-center">{{ __('Merit Points') }}</th>
                                     <th scope="col" class="text-center">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
                             <tbody id="offense-list">
-                                @foreach ($offenses as $offense)
+                                @foreach ($contributes as $contribute)
                                     <tr>
-                                        <td class="text-center">{{ $offense->id }}</td>
-                                        <td class="text-center">{{ $offense->jenis_kesalahan }}</td>
-                                        <td class="text-center">{{ $offense->dimerit }}</td>
+                                        <td class="text-center">{{ $contribute->id }}</td>
+                                        <td class="text-center">{{ $contribute->contribute_type }}</td>
+                                        <td class="text-center">{{ $contribute->merit }}</td>
                                         <td class="text-center">
-                                            <form action="{{ route('offense.destroy', $offense) }}" method="POST" onsubmit="return confirm('{{ __('Are you sure you want to delete this offense?') }}');">
+                                            <form action="{{ route('offense.destroy', $contribute) }}" method="POST" onsubmit="return confirm('{{ __('Are you sure you want to delete this offense?') }}');">
                                                 @csrf
                                                 @method('DELETE')
                                                 
-                                                <a href="{{ route('offense.edit', $offense) }}">
+                                                <a href="{{ route('offense.edit', $contribute) }}">
                                                     <button type="button" class="btn btn-primary">{{ __('Edit') }}</button>
                                                 </a>
 

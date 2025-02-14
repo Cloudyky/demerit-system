@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create('offenses', function (Blueprint $table) {
+        Schema::create('contributions', function (Blueprint $table) {
             $table->id();
-            $table->string('jenis_kesalahan');
-            $table->integer('dimerit');
+            $table->string('contribute_type');
+            $table->integer('merit');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ return new class extends Migration
     public function down(): void
     {
         //
-        Schema::dropIfExists('offenses');
+        Schema::dropIfExists('contributions');
     }
 };

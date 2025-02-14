@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Offense extends Model
+class Contribute extends Model
 {
     //
     protected $fillable = [
-        'offense_type',
-        'demerit',
+        'contribute_type',
+        'merit',
     ];
 }
