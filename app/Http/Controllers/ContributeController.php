@@ -14,54 +14,54 @@ class ContributeController extends Controller
         return view('contribution.index', compact('contributes'));
     }
 
-    // public function destroy(Offense $offense)
-    // {
-    //     $offense->delete();
-    //     return redirect()->route('offense')->with('success', 'Offense deleted successfully.');
-    // }
+    public function destroy(Contribution $contribution)
+    {
+        $contribution->delete();
+        return redirect()->route('contribution')->with('success', 'Contribute deleted successfully.');
+    }
 
-    // public function edit(Offense $offense)
-    // {
-    //     return view('offense.edit', compact('offense'));
-    // }
+    public function edit(Contribution $contribution)
+    {
+        return view('contribution.edit', compact('contribution'));
+    }
 
-    // public function update(Request $request, Offense $offense)
-    // {
-    //     $request->validate([
-    //         'offense' => 'required|string|max:255',
-    //         'points' => 'required|integer|min:0',
-    //     ]);
+    public function update(Request $request, Contribution $contribution)
+    {
+        $request->validate([
+            'contribution' => 'required|string|max:255',
+            'points' => 'required|integer|min:0',
+        ]);
 
-    //     $offense->update([
-    //         'offense_type' => $request->input('offense'),
-    //         'demerit' => $request->input('points'),
-    //     ]);
+        $contribution->update([
+            'contribute_type' => $request->input('contribution'),
+            'merit' => $request->input('points'),
+        ]);
 
-    //     return redirect()->route('offense')->with('success', 'Offense updated successfully.');
-    // }
+        return redirect()->route('contribution')->with('success', 'Contribution updated successfully.');
+    }
 
-    // public function show()
-    // {
-    //     if (!auth()->check() || auth()->user()->role !== 'admin') {
-    //         return abort(403, 'Unauthorized access');
-    //     }
+    public function show()
+    {
+        if (!auth()->check() || auth()->user()->role !== 'admin') {
+            return abort(403, 'Unauthorized access');
+        }
 
-    //     return view('offense.create');
-    // }
+        return view('contribution.create');
+    }
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'description' => 'required|string|max:255',
-    //         'points' => 'required|integer|min:0',
-    //     ]);
+    public function store(Request $request)
+    {
+        $request->validate([
+            'description' => 'required|string|max:255',
+            'points' => 'required|integer|min:0',
+        ]);
 
-    //     Offense::create([
-    //         'offense_type' => $request->input('description'),
-    //         'demerit' => $request->input('points'),
-    //     ]);
+        Offense::create([
+            'contribute_type' => $request->input('description'),
+            'merit' => $request->input('points'),
+        ]);
 
-    //     return redirect()->route('offense')->with('success', 'Offense added successfully.');
-    // }
+        return redirect()->route('contribution')->with('success', 'Contribution  added successfully.');
+    }
 
 }

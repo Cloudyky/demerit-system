@@ -3,13 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OffenseController;
-use App\Http\Controllers\CreateOffenseController;
+use App\Http\Controllers\ContributeController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
 Route::get('/offense/add', [OffenseController::class, 'show'])->name('offense.add'); 
+Route::get('/contribution/add', [ContributeController::class, 'show'])->name('contribution.add'); 
 
 Route::middleware(['auth', 'verified', AdminMiddleware::class])->group(function () {
     // System Settings

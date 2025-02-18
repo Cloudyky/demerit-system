@@ -22,7 +22,7 @@
                             </select>
                         </form>
                         <div class="flex gap-2">
-                            <a class="btn btn-primary" href="{{ route('offense.add') }}" role="button">Add New Contribution</a>
+                            <a class="btn btn-primary" href="{{ route('contribution.add') }}" role="button">Add New Contribution</a>
                             <button class="btn btn-secondary" onclick="printTable()">Print Table</button>
                         </div>
                     </div>
@@ -44,11 +44,11 @@
                                         <td class="text-center">{{ $contribute->contribute_type }}</td>
                                         <td class="text-center">{{ $contribute->merit }}</td>
                                         <td class="text-center">
-                                            <form action="{{ route('offense.destroy', $contribute) }}" method="POST" onsubmit="return confirm('{{ __('Are you sure you want to delete this offense?') }}');">
+                                            <form action="{{ route('contribution.destroy', $contribute) }}" method="POST" onsubmit="return confirm('{{ __('Are you sure you want to delete this contribution?') }}');">
                                                 @csrf
                                                 @method('DELETE')
                                                 
-                                                <a href="{{ route('offense.edit', $contribute) }}">
+                                                <a href="{{ route('contribution.edit', $contribute) }}">
                                                     <button type="button" class="btn btn-primary">{{ __('Edit') }}</button>
                                                 </a>
 
