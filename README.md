@@ -41,11 +41,5 @@ Sistem ini **masih dalam pembangunan** dan mungkin mengandungi bug atau fungsi y
    php artisan serve
    ```
 
-## 🛠 Sumbangan
-Jika anda ingin menyumbang kepada projek ini, sila buat **pull request** atau kemukakan **isu** melalui GitHub.
-
-## 📄 Lesen
-Projek ini berada di bawah lesen MIT.
-
 ---
 💡 *Sila ambil perhatian bahawa sistem ini masih dalam pembangunan, dan sebarang perubahan boleh berlaku pada bila-bila masa.*
