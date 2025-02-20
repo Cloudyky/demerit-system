@@ -66,9 +66,9 @@
                         </p>
                         @if (Route::has('login'))
                             @auth
-                                <a href="{{ url('/dashboard') }}" class="btn btn-success btn-lg mt-4">Pergi ke Dashboard</a>
+                                <a href="{{ url('/dashboard') }}" class="btn btn-success btn-lg mt-4">{{ _('Go to Dashboard') }}</a>
                             @else
-                                <a href="{{ route('login') }}" class="btn btn-primary btn-lg mt-4 me-2">Log In</a>
+                                <a href="{{ route('login') }}" class="btn btn-primary btn-lg mt-4 me-2">{{ _('Log In') }}</a>
                             @endauth
                         @endif
                     </div>
@@ -77,7 +77,7 @@
         </div>
 
         <footer class="text-center py-3">
-            <p class="mb-0">&copy; {{ date('Y') }} Sistem Merit Demerit KVDSAZI</p>
+            <p class="mb-0">&copy; {{ date('Y') }} {{ _('Sistem Merit Demerit KVDSAZI') }}</p>
         </footer>
     </body>
     

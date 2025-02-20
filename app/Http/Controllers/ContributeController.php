@@ -56,7 +56,7 @@ class ContributeController extends Controller
             'points' => 'required|integer|min:0',
         ]);
 
-        Offense::create([
+        Contribution::create([
             'contribute_type' => $request->input('description'),
             'merit' => $request->input('points'),
         ]);
