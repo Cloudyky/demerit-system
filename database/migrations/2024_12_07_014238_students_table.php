@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('tahun');
             $table->string('kohort');
             $table->string('class');
-            $table->integer('merit_point');
+            $table->integer('merit_points');
             $table->timestamps();
         });
     }

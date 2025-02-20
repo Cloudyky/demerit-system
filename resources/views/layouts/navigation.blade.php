@@ -42,14 +42,14 @@
 
                         <x-nav-link 
                         :href="route('offense')"
-                        :active="request()->routeIs('offense') || request()->routeIs('offense.create') || request()->routeIs('offense.edit')"
+                        :active="request()->routeIs('offense') || request()->routeIs('offense.add') || request()->routeIs('offense.edit')"
                         >
                             {{ __('Offense') }}
                         </x-nav-link>
                         
                         <x-nav-link 
                         :href="route('contribution')"
-                        :active="request()->routeIs('contribution') || request()->routeIs('offense.create') || request()->routeIs('offense.edit')"
+                        :active="request()->routeIs('contribution') || request()->routeIs('contribution.add') || request()->routeIs('offense.edit')"
                         >
                             {{ __('Contribution') }}
                         </x-nav-link>
