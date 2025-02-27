@@ -37,22 +37,22 @@
                     >
                         {{ __('Students') }}
                     </x-nav-link>
+                    
+                    <x-nav-link 
+                    :href="route('offense')"
+                    :active="request()->routeIs('offense') || request()->routeIs('offense.add') || request()->routeIs('offense.edit')"
+                    >
+                        {{ __('Offense') }}
+                    </x-nav-link>
+                    
+                    <x-nav-link 
+                    :href="route('contribution')"
+                    :active="request()->routeIs('contribution') || request()->routeIs('contribution.add') || request()->routeIs('contribution.edit')"
+                    >
+                        {{ __('Contribution') }}
+                    </x-nav-link>
 
                     @if (Auth::user() && Auth::user()->role === 'admin')
-
-                        <x-nav-link 
-                        :href="route('offense')"
-                        :active="request()->routeIs('offense') || request()->routeIs('offense.add') || request()->routeIs('offense.edit')"
-                        >
-                            {{ __('Offense') }}
-                        </x-nav-link>
-                        
-                        <x-nav-link 
-                        :href="route('contribution')"
-                        :active="request()->routeIs('contribution') || request()->routeIs('contribution.add') || request()->routeIs('offense.edit')"
-                        >
-                            {{ __('Contribution') }}
-                        </x-nav-link>
 
                         <x-nav-link :href="route('settings')" :active="request()->routeIs('settings')">
                             {{ __('System Settings') }}
@@ -137,21 +137,21 @@
                 {{ __('Students') }}
             </x-responsive-nav-link>
 
+            <x-responsive-nav-link 
+            :href="route('offense')" 
+            :active="request()->routeIs('offense')"
+            >
+                {{ __('Offense') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link 
+            :href="route('contribution')" 
+            :active="request()->routeIs('contribution')"
+            >
+                {{ __('Contribution') }}
+            </x-responsive-nav-link>
+
             @if (Auth::user() && Auth::user()->role === 'admin')
-
-                <x-responsive-nav-link 
-                :href="route('offense')" 
-                :active="request()->routeIs('offense')"
-                >
-                    {{ __('Offense') }}
-                </x-responsive-nav-link>
-
-                <x-responsive-nav-link 
-                :href="route('contribution')" 
-                :active="request()->routeIs('contribution')"
-                >
-                    {{ __('Contribution') }}
-                </x-responsive-nav-link>
 
                 <x-responsive-nav-link 
                 :href="route('settings')" 

@@ -22,7 +22,11 @@
                             </select>
                         </form>
                         <div class="flex gap-2">
-                            <a class="btn btn-primary" href="{{ route('contribution.add') }}" role="button">Add New Contribution</a>
+                            @if (Auth::user() && Auth::user()->role === 'admin')
+                                <a href="{{ route('contribution.add') }}">
+                                    <button class="btn btn-primary">{{ __('Add Contribution') }}</button>
+                                </a>
+                            @endif
                             <button class="btn btn-secondary" onclick="printTable()">Print Table</button>
                         </div>
                     </div>
@@ -48,9 +52,13 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 
-                                                <a href="{{ route('contribution.edit', $contribute) }}">
-                                                    <button type="button" class="btn btn-primary">{{ __('Edit') }}</button>
-                                                </a>
+                                                @if (Auth::user() && Auth::user()->role === 'admin')
+
+                                                    <a href="{{ route('contribution.edit', $contribute) }}">
+                                                        <button type="button" class="btn btn-primary">{{ __('Edit') }}</button>
+                                                    </a>
+
+                                                @endif
 
                                                 <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
                                             </form>
