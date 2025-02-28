@@ -65,13 +65,13 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 
-                                                @if ($user->name !== Auth::User()->name)
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                @endif
-                                                
                                                 <a href="{{ route('dashboard') }}">
                                                     <button type="button" class="btn btn-primary">More</button>
                                                 </a>
+
+                                                @if ($user->name !== Auth::User()->name)
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                @endif
                                             </form>
                                         </td>
                                     </tr>        

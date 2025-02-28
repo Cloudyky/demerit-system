@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id('id')->autoIncrement();
             $table->string('name');
             $table->string('ic')->unique();
+            $table->string('gender');
             $table->string('kohort');
             $table->string('class');
             $table->integer('merit_points');

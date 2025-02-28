@@ -1,5 +1,4 @@
 <?php
+use App\Http\Controllers\StudentController;
 
-Route::get('/students', function () {
-    return view('students');
-})->name('students');
+Route::get('/students', [StudentController::class, 'index'])->name('students');
