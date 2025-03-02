@@ -26,27 +26,14 @@
                                 <button class="btn btn-secondary" onclick="">All</button>
                             </a>
                             <button class="btn btn-secondary" onclick="">By Class</button>
-                            
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Sort by Merit
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#" onclick="">{{ __('Highest') }}</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="">{{ __('Highest') }}</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="">{{ __('Lowest') }}</a></li>
                                 </ul>
-
-                                <form class="btn btn-secondary" method="GET" action="{{ route('offense') }}">
-                                    @csrf
-                                    <select 
-                                        class="form-control rounded-lg w-full sm:w-64" 
-                                        id="sort" 
-                                        name="sort"
-                                        onchange="sortOffenses()">
-                                        <option class="dropdown-item" value="highest">{{ __('Highest') }}</option>
-                                        <option class="dropdown-item" value="lowest">{{ __('Lowest') }}</option>
-                                    </select>
-                                </form>
                             </div>
                         </div>
                     </div> 

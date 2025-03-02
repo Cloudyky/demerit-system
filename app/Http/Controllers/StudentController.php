@@ -17,11 +17,12 @@ class StudentController extends Controller
     
             $query->where(function ($subQuery) use ($searchTerm) {
                 $subQuery->where('ic', 'like', '%' . $searchTerm . '%')
-                         ->orWhere('name', 'like', '%' . $searchTerm . '%');
+                         ->orWhere('name', 'like', '%' . $searchTerm . '%')
+                         ->orWhere('class', 'like', '%' . $searchTerm . '%');
             });
         }
     
-        $students = $query->paginate(10);
+        $students = $query->get();
     
         return view('student.index', compact('students'));
     }

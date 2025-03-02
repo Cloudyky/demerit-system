@@ -21,7 +21,7 @@ class UserController extends Controller
             });
         }
 
-        $users = $query->paginate(10);
+        $users = $query->get();
 
         return view('users', compact('users'));
     }
