@@ -4,10 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OffenseController;
 use App\Http\Controllers\ContributeController;
+use App\Http\Controllers\ActiveUserController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [ActiveUserController::class, 'index'])->name('welcome'); 
+// Route::get('/user/stats', [ActiveUserController::class, 'getUserStats'])->name('user.stats');
 
 Route::get('/offense/add', [OffenseController::class, 'show'])->name('offense.add'); 
 Route::get('/contribution/add', [ContributeController::class, 'show'])->name('contribution.add'); 
