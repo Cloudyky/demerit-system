@@ -7,7 +7,7 @@ use App\Http\Controllers\ContributeController;
 use App\Http\Controllers\ActiveUserController;
 
 Route::get('/', [ActiveUserController::class, 'index'])->name('welcome'); 
-// Route::get('/user/stats', [ActiveUserController::class, 'getUserStats'])->name('user.stats');
+Route::get('/user/stats', [ActiveUserController::class, 'getUserStats'])->name('user.stats');
 
 Route::get('/offense/add', [OffenseController::class, 'show'])->name('offense.add'); 
 Route::get('/contribution/add', [ContributeController::class, 'show'])->name('contribution.add'); 

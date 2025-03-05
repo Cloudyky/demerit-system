@@ -13,41 +13,39 @@
                         <form class="flex items-center gap-2 w-full sm:w-auto" method="GET" action="{{ route('students') }}">
                             @csrf
                             <input 
-                                class="form-control rounded-lg w-full sm:w-96" 
+                                class="form-control rounded-lg w-full sm:w-96 border border-gray-300 px-4 py-2" 
                                 type="search" 
                                 name="search" 
                                 placeholder="{{ __('Search by IC, Name or Class') }}" 
                                 aria-label="Search" 
                                 value="{{ request('search') }}"> 
-                            <button class="btn btn-success" type="submit">Search</button>
+                            <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                                {{ __('Search') }}
+                            </button>
                         </form>
-                        <div class="flex gap-2">
+                        <div class="flex gap-2 flex-wrap">
                             <a href="{{ route('students') }}">
-                                <button class="btn btn-secondary" onclick="">All</button>
-                            </a>
-                            <button class="btn btn-secondary" onclick="">By Class</button>
-                            
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Sort by Merit
+                                <button class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
+                                    {{ __('All') }}
                                 </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" onclick="">{{ __('Highest') }}</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="">{{ __('Highest') }}</a></li>
-                                </ul>
+                            </a>
+                            
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                                {{ __('By Class') }}
+                            </button>
 
-                                <form class="btn btn-secondary" method="GET" action="{{ route('offense') }}">
-                                    @csrf
-                                    <select 
-                                        class="form-control rounded-lg w-full sm:w-64" 
-                                        id="sort" 
-                                        name="sort"
-                                        onchange="sortOffenses()">
-                                        <option class="dropdown-item" value="highest">{{ __('Highest') }}</option>
-                                        <option class="dropdown-item" value="lowest">{{ __('Lowest') }}</option>
-                                    </select>
-                                </form>
-                            </div>
+                            <form method="GET" action="{{ route('offense') }}">
+                                @csrf
+                                <select 
+                                    class="px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300"
+                                    id="sort" 
+                                    name="sort"
+                                    onchange="sortOffenses()">
+                                    <option value="highest">{{ __('Merit') }}</option>
+                                    <option value="highest">{{ __('Merit (Highest)') }}</option>
+                                    <option value="lowest">{{ __('Merit (Lowest)') }}</option>
+                                </select>
+                            </form>
                         </div>
                     </div> 
 
@@ -81,13 +79,15 @@
                                                 @method('DELETE')
                                                 
                                                 <a href="">
-                                                    <button type="button" class="btn btn-primary" style="margin-bottom: 2px;">{{ __('More') }}</button>
+                                                    <button type="button" class="px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+                                                        {{ __('More') }}
+                                                    </button>
                                                 </a>
 
                                                 @if (Auth::user() && Auth::user()->role === 'admin')
-
-                                                    <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
-
+                                                    <button type="submit" class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
+                                                        {{ __('Delete') }}
+                                                    </button>
                                                 @endif
 
                                             </form>
@@ -97,6 +97,7 @@
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
