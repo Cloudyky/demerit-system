@@ -13,7 +13,6 @@ Route::get('/offense/add', [OffenseController::class, 'show'])->name('offense.ad
 Route::get('/contribution/add', [ContributeController::class, 'show'])->name('contribution.add'); 
 
 Route::middleware(['auth', 'verified', AdminMiddleware::class])->group(function () {
-    // System Settings
     Route::get('/settings', [SystemSettingController::class, 'index'])->name('settings');
 }); 
 

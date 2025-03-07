@@ -41,7 +41,7 @@
             @if (Route::has('login'))
                 <div class="d-flex">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="btn btn-outline-primary me-2">
+                        <a href="{{ url('/dashboard') }}" class="btn btn-primary me-2">
                             {{ __('Dashboard') }}
                         </a>
                     @else
@@ -64,7 +64,7 @@
                     </p>
                     @if  (Route::has('login'))
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="btn btn-success btn-lg mt-4">{{ __('Go to Dashboard') }}</a>
+                            <a href="{{ url('/dashboard') }}" class="btn btn-primary btn-lg mt-4">{{ __('Go to Dashboard') }}</a>
                         @else
                             <a href="{{ route('login') }}" class="btn btn-primary btn-lg mt-4 me-2">{{ __('Log In') }}</a>
                         @endauth
