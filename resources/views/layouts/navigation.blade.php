@@ -33,16 +33,9 @@
 
                     <x-nav-link 
                     :href="route('students')" 
-                    :active="request()->routeIs('students')"
+                    :active="request()->routeIs('students') || request()->routeIs('students.show')"
                     >
                         {{ __('Students') }}
-                    </x-nav-link>
-                    
-                    <x-nav-link 
-                    :href="route('offense')"
-                    :active="request()->routeIs('offense') || request()->routeIs('offense.add') || request()->routeIs('offense.edit')"
-                    >
-                        {{ __('Offense') }}
                     </x-nav-link>
                     
                     <x-nav-link 
@@ -50,6 +43,13 @@
                     :active="request()->routeIs('contribution') || request()->routeIs('contribution.add') || request()->routeIs('contribution.edit')"
                     >
                         {{ __('Contribution') }}
+                    </x-nav-link>
+                    
+                    <x-nav-link 
+                    :href="route('offense')"
+                    :active="request()->routeIs('offense') || request()->routeIs('offense.add') || request()->routeIs('offense.edit')"
+                    >
+                        {{ __('Offense') }}
                     </x-nav-link>
 
                     @if (Auth::user() && Auth::user()->role === 'admin')
@@ -132,23 +132,23 @@
 
             <x-responsive-nav-link 
             :href="route('students')" 
-            :active="request()->routeIs('students')"
+            :active="request()->routeIs('students') || request()->routeIs('students.show')"
             >
                 {{ __('Students') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link 
-            :href="route('offense')" 
-            :active="request()->routeIs('offense')"
+            :href="route('contribution')" 
+            :active="request()->routeIs('contribution') || request()->routeIs('contribution.add') || request()->routeIs('contribution.edit')"
             >
-                {{ __('Offense') }}
+                {{ __('Contribution') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link 
-            :href="route('contribution')" 
-            :active="request()->routeIs('contribution')"
+            :href="route('offense')" 
+            :active="request()->routeIs('offense') || request()->routeIs('offense.add') || request()->routeIs('offense.edit')"
             >
-                {{ __('Contribution') }}
+                {{ __('Offense') }}
             </x-responsive-nav-link>
 
             @if (Auth::user() && Auth::user()->role === 'admin')

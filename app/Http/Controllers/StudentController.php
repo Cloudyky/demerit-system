@@ -23,7 +23,14 @@ class StudentController extends Controller
         }
     
         $students = $query->get();
+        $count = $students->count();
     
-        return view('student.index', compact('students'));
+        return view('student.index', compact('students', 'count'));
     }
+
+    public function show($id, $name){
+        $student = Student::where('id', $id)->where('name', urldecode($name))->firstOrFail();
+        return view('student.personal', compact('student'));
+    }
+
 }

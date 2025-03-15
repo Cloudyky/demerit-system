@@ -10,17 +10,22 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-between items-center pb-4 flex-wrap gap-4">
-                        <form class="flex items-center gap-2 w-full sm:w-auto" method="GET" action="{{ route('offense') }}">
-                            @csrf
-                            <select 
-                                class="form-control rounded-lg w-full sm:w-64" 
-                                id="sort" 
-                                name="sort"
-                                onchange="sortOffenses()">
-                                <option value="highest">Demerit (Highest to Lowest)</option>
-                                <option value="lowest">Demerit (Lowest to Highest)</option>
-                            </select>
-                        </form>
+                        <div class="flex gap-2">
+                            <form class="flex items-center gap-2 w-full sm:w-auto" method="GET" action="{{ route('offense') }}">
+                                @csrf
+                                <input 
+                                    class="form-control rounded-lg w-full sm:w-96" 
+                                    type="search" 
+                                    name="search" 
+                                    placeholder="{{ __('Search offense') }}" 
+                                    aria-label="Search" 
+                                    value="{{ request('search') }}"> 
+                                <button class="btn btn-success" type="submit">Search</button>
+                                <a href="{{ route('offense') }}">
+                                    <button class="btn btn-success">All</button>
+                                </a>
+                            </form>
+                        </div>
                         <div class="flex gap-2">
                             @if (Auth::user() && Auth::user()->role === 'admin')
                                 <a href="{{ route('offense.add') }}">
@@ -28,7 +33,21 @@
                                 </a>
                             @endif
                             <button class="btn btn-secondary" onclick="printTable()">Print Table</button>
+                            <form class="flex items-center gap-2 w-full sm:w-auto" method="GET" action="{{ route('offense') }}">
+                                @csrf
+                                <select 
+                                    class="form-control rounded-lg w-full sm:w-64" 
+                                    id="sort" 
+                                    name="sort"
+                                    onchange="sortOffenses()">
+                                    <option value="highest">Demerit (Highest to Lowest)</option>
+                                    <option value="lowest">Demerit (Lowest to Highest)</option>
+                                </select>
+                            </form>
                         </div>
+                    </div>
+                    <div class="flex justify-between items-center pb-4 flex-wrap gap-4">
+                        <span class="text-gray-600">{{ $count }} Result Shown</span>
                     </div>
 
                     <div class="table-responsive">
@@ -51,6 +70,8 @@
                                             <form action="{{ route('offense.destroy', $offense) }}" method="POST" onsubmit="return confirm('{{ __('Are you sure you want to delete this offense?') }}');">
                                                 @csrf
                                                 @method('DELETE')
+
+                                                <button type="button" class="btn btn-primary">{{ __('Assign') }}</button>
                                                 
                                                 @if (Auth::user() && Auth::user()->role === 'admin')
                                                 
@@ -58,9 +79,9 @@
                                                         <button type="button" class="btn btn-primary">{{ __('Edit') }}</button>
                                                     </a>
 
-                                                @endif
-
                                                 <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
+
+                                                @endif
                                             </form>
                                         </td>
                                     </tr>

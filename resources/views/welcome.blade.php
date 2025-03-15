@@ -11,6 +11,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('assets/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('assets/safari-pinned-tab.svg') }}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
     <style>
         html, body {
@@ -72,23 +81,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- <div class="container text-center mt-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="alert alert-primary">
-                        <h5>Total Users</h5>
-                        <p class="mb-0"><strong id="totalUsers">{{ $totalUsers }}</strong></p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="alert alert-success">
-                        <h5>Online Users</h5>
-                        <p class="mb-0"><strong id="activeUsers">{{ $activeUsers }}</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
         
     </div>
 

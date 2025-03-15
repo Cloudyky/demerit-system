@@ -10,32 +10,38 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-between items-center pb-4 flex-wrap gap-4">
-                        <form class="flex items-center gap-2 w-full sm:w-auto" method="GET" action="{{ route('students') }}">
-                            @csrf
-                            <input 
-                                class="form-control rounded-lg w-full sm:w-96" 
-                                type="search" 
-                                name="search" 
-                                placeholder="{{ __('Search by IC, Name or Class') }}" 
-                                aria-label="Search" 
-                                value="{{ request('search') }}"> 
-                            <button class="btn btn-success" type="submit">Search</button>
-                        </form>
-                        <div class="flex gap-2">
+                        <div class="flex items-center gap-2 w-full sm:w-auto">
+                            <form class="flex items-center gap-2 w-full sm:w-auto" method="GET" action="{{ route('students') }}">
+                                @csrf
+                                <input 
+                                    class="form-control rounded-lg w-full sm:w-96" 
+                                    type="search" 
+                                    name="search" 
+                                    placeholder="{{ __('Search by IC, Name or Class') }}" 
+                                    aria-label="Search" 
+                                    value="{{ request('search') }}"> 
+                                <button class="btn btn-success" type="submit">Search</button>
+                            </form>
                             <a href="{{ route('students') }}">
-                                <button class="btn btn-secondary" onclick="">All</button>
+                                <button class="btn btn-success">All</button>
                             </a>
+                        </div>
+                        <div class="flex gap-2 items-center">
+                            
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Sort by Merit
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" onclick=""></a></li>
-                                    <li><a class="dropdown-item" href="#" onclick=""></a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="">Ascending</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="">Descending</a></li>
                                 </ul>
                             </div>
                         </div>
-                    </div> 
+                    </div>
+                    <div class="flex justify-between items-center pb-4 flex-wrap gap-4">
+                        <span class="text-gray-600">{{ $count }} Result Shown</span>
+                    </div>
 
                     <div class="table-responsive">
                         <table id="userTable" class="table table-striped">
@@ -61,16 +67,10 @@
                                         <td class="text-center">{{ $student->kohort }}</td>
                                         <td class="text-center">{{ $student->class }}</td>
                                         <td class="text-center">{{ $student->merit_points }}</td>
-                                        <td class="text-center action-col">
-                                            <form action="" method="POST" onsubmit="return confirm('{{ __('Are you sure you want to delete this student?') }}');">
-                                                @csrf
-                                                @method('DELETE')
-                                                
-                                                <a href="">
-                                                    <button type="button" class="btn btn-primary" style="margin-bottom: 2px;">{{ __('More') }}</button>
-                                                </a>
-
-                                            </form>
+                                        <td class="text-center action-col">    
+                                            <a href="{{ route('students.show', ['id' => $student->id, 'name' => urlencode($student->name)]) }}">
+                                                <button type="button" class="btn btn-primary" style="margin-bottom: 2px;">{{ __('More') }}</button>
+                                            </a>
                                         </td>
                                     </tr>        
                                 @endforeach

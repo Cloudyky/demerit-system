@@ -10,8 +10,19 @@ class ContributeController extends Controller
     //
     public function index(Request $request)
     {
-        $contributes = Contribution::all();
-        return view('contribution.index', compact('contributes'));
+        $query = Contribution::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $searchTerm = $request->search;
+    
+            $query->where(function ($subQuery) use ($searchTerm) {
+                $subQuery->where('contribute_type', 'like', '%' . $searchTerm . '%');
+            });
+        }
+    
+        $contributes = $query->get();
+        $count = $contributes->count();
+        return view('contribution.index', compact('contributes', 'count'));
     }
 
     public function destroy(Contribution $contribution)

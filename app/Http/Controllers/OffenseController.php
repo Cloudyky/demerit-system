@@ -10,8 +10,19 @@ class OffenseController extends Controller
     //
     public function index(Request $request)
     {
-        $offenses = Offense::all();
-        return view('offense.index', compact('offenses'));
+        $query = Offense::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $searchTerm = $request->search;
+    
+            $query->where(function ($subQuery) use ($searchTerm) {
+                $subQuery->where('offense_type', 'like', '%' . $searchTerm . '%');
+            });
+        }
+    
+        $offenses = $query->get();
+        $count = $offenses->count();
+        return view('offense.index', compact('offenses', 'count'));
     }
 
     public function destroy(Offense $offense)
