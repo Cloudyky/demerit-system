@@ -61,18 +61,9 @@
                                         <td class="text-center">{{ $user->ic }}</td>
                                         <td class="text-center">{{ $user->role }}</td>
                                         <td class="text-center action-col">
-                                            <form action="{{ route('users.destroy', $user) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                
-                                                <a href="{{ route('dashboard') }}">
-                                                    <button type="button" class="btn btn-primary">More</button>
-                                                </a>
-
-                                                @if ($user->name !== Auth::User()->name)
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                @endif
-                                            </form>
+                                            <a href="{{ route('dashboard') }}">
+                                                <button type="button" class="btn btn-primary">More</button>
+                                            </a>
                                         </td>
                                     </tr>        
                                 @endforeach

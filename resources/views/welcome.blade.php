@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistem Merit Demerit KVDSAZI</title>
+    <title>KVDSAZI Merit Demerit System</title>
 
     <!-- Fonts and Bootstrap -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -54,13 +54,13 @@
         </div>
     </nav>
 
-    <div class="content">
+    <div class="content d-flex justify-content-center align-items-center">
         <div class="container text-center mt-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <h1 class="display-4 fw-bold">{{ __('Selamat Datang ke Sistem Merit Demerit KVDSAZI') }}</h1>
+                    <h1 class="display-4 fw-bold">{{ __('Welcome to KVDSAZI Merit Demerit System') }}</h1>
                     <p class="lead text-muted mt-3">
-                        {{ __('Sistem ini direka untuk membantu menguruskan rekod merit dan demerit pelajar dengan mudah dan efisien. Log masuk untuk teruskan!') }}
+                        {{ __('This system is designed to help manage student merit and demerit records easily and efficiently. Log in to continue!') }}
                     </p>
                     @if  (Route::has('login'))
                         @auth
@@ -73,27 +73,27 @@
             </div>
         </div>
 
-        <div class="container text-center mt-4">
+        {{-- <div class="container text-center mt-4">
             <div class="row">
                 <div class="col-md-6">
                     <div class="alert alert-primary">
-                        <h5>Jumlah Pengguna</h5>
+                        <h5>Total Users</h5>
                         <p class="mb-0"><strong id="totalUsers">{{ $totalUsers }}</strong></p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="alert alert-success">
-                        <h5>Pengguna Online</h5>
+                        <h5>Online Users</h5>
                         <p class="mb-0"><strong id="activeUsers">{{ $activeUsers }}</strong></p>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         
     </div>
 
     <footer class="text-center py-3">
-        <p class="mb-0">&copy; {{ date('Y') }} {{ __('Sistem Merit Demerit KVDSAZI') }}</p>
+        <p class="mb-0">&copy; {{ date('Y') }} {{ __('KVDSAZI Merit Demerit System') }}</p>
     </footer>
 
     <script>
@@ -106,7 +106,7 @@
                 });
         }
 
-        setInterval(updateUserStats, 5000); // Auto-refresh setiap 5 saat
+        setInterval(updateUserStats, 5000); // Auto-refresh every 5 seconds
     </script>
 
 </body>

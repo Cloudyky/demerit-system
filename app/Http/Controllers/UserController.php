@@ -23,7 +23,7 @@ class UserController extends Controller
 
         $users = $query->get();
 
-        return view('users', compact('users'));
+        return view('user.index', compact('users'));
     }
 
     public function destroy(User $user)
@@ -38,6 +38,6 @@ class UserController extends Controller
     
     public function show()
     {
-        return view('users');
+        return view('user.index');
     }
 }
