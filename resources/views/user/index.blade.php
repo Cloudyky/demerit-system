@@ -10,17 +10,22 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-between items-center pb-4 flex-wrap gap-4">
-                        <form class="flex items-center gap-2 w-full sm:w-auto" method="GET" action="{{ route('users') }}">
-                            @csrf
-                            <input 
-                                class="form-control rounded-lg w-full sm:w-96" 
-                                type="search" 
-                                name="search" 
-                                placeholder="{{ __('Search by IC or Name') }}" 
-                                aria-label="Search" 
-                                value="{{ request('search') }}">
-                            <button class="btn btn-success" type="submit">Search</button>
-                        </form>
+                        <div class="flex items-center gap-2 w-full sm:w-auto">
+                            <form class="flex items-center gap-2 w-full sm:w-auto" method="GET" action="{{ route('users') }}">
+                                @csrf
+                                <input 
+                                    class="form-control rounded-lg w-full sm:w-96" 
+                                    type="search" 
+                                    name="search" 
+                                    placeholder="{{ __('Search by IC or Name') }}" 
+                                    aria-label="Search" 
+                                    value="{{ request('search') }}">
+                                <button class="btn btn-success" type="submit">Search</button>
+                            </form>
+                            <a href="{{ route('users') }}">
+                                <button class="btn btn-success">All</button>
+                            </a>
+                        </div>
                         <div class="flex gap-2">
                             <a class="btn btn-primary" href="{{ route('register') }}" role="button">Register New User</a>
                             <button class="btn btn-secondary" onclick="printTable()">Print Table</button>
@@ -34,6 +39,9 @@
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                    <div class="flex justify-between items-center pb-4 flex-wrap gap-4">
+                        <span class="text-gray-600">{{ $count }} Result Shown</span>
                     </div>
 
                     <div class="table-responsive">
@@ -61,7 +69,7 @@
                                         <td class="text-center">{{ $user->ic }}</td>
                                         <td class="text-center">{{ $user->role }}</td>
                                         <td class="text-center action-col">
-                                            <a href="{{ route('dashboard') }}">
+                                            <a href="{{ route('users.show', ['id' => $user->id, 'name' => urlencode($user->name)]) }}">
                                                 <button type="button" class="btn btn-primary">More</button>
                                             </a>
                                         </td>

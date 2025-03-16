@@ -8,7 +8,8 @@ use App\Models\Student;
 class StudentController extends Controller
 {
     //
-    public function index(Request $request){
+    public function index(Request $request)
+    {
 
         $query = Student::query();
 
@@ -28,7 +29,8 @@ class StudentController extends Controller
         return view('student.index', compact('students', 'count'));
     }
 
-    public function show($id, $name){
+    public function show($id, $name)
+    {
         $student = Student::where('id', $id)->where('name', urldecode($name))->firstOrFail();
         return view('student.personal', compact('student'));
     }

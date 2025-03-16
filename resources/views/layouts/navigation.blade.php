@@ -24,7 +24,7 @@
 
                         <x-nav-link 
                         :href="route('users')" 
-                        :active="request()->routeIs('users')"
+                        :active="request()->routeIs('users') || request()->routeIs('users.show')"
                         >
                             {{ __('Users') }}
                         </x-nav-link>
@@ -123,7 +123,7 @@
 
                 <x-responsive-nav-link 
                 :href="route('users')" 
-                :active="request()->routeIs('users')"
+                :active="request()->routeIs('users') || request()->routeIs('users.show')"
                 >
                     {{ __('Users') }}
                 </x-responsive-nav-link>

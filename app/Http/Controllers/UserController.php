@@ -22,8 +22,15 @@ class UserController extends Controller
         }
 
         $users = $query->get();
+        $count = $users->count();
 
-        return view('user.index', compact('users'));
+        return view('user.index', compact('users', 'count'));
+    }
+    
+    public function show($id, $name)
+    {
+        $user = User::where('id', $id)->where('name', urldecode($name))->firstOrFail();
+        return view('user.personal', compact('user'));
     }
 
     public function destroy(User $user)
@@ -34,10 +41,5 @@ class UserController extends Controller
         }
         
         return redirect()->route('users')->with('error', 'You are not authorized to delete this user.');
-    }
-    
-    public function show()
-    {
-        return view('user.index');
     }
 }
