@@ -67,7 +67,7 @@
                                         <td class="text-center">{{ $offense->offense_type }}</td>
                                         <td class="text-center">{{ $offense->demerit }}</td>
                                         <td class="text-center">
-                                            <form action="{{ route('offense.destroy', $offense) }}" method="POST" onsubmit="return confirm('{{ __('Are you sure you want to delete this offense?') }}');">
+                                            <form class="" action="{{ route('offense.destroy', $offense) }}" method="POST" onsubmit="return confirm('{{ __('Are you sure you want to delete this offense?') }}');">
                                                 @csrf
                                                 @method('DELETE')
 

@@ -9,7 +9,7 @@ class ContributeController extends Controller
 {
     //
     public function index(Request $request)
-    {
+    {   
         $query = Contribution::query();
 
         if ($request->has('search') && !empty($request->search)) {
